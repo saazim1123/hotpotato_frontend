@@ -3,15 +3,26 @@ import './App.css';
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import NavBar from './components/NavBar'
 
 class App extends Component {
+
+  state = {
+    showNavbar: false
+  }
+
+
+  toggleNavbar = () => {
+      this.setState({ showNavbar: !this.state.showNavbar })
+  }
 
   render(){
     return (
       <div>
           <div>
-            <h1>Server is Working</h1>
-            {/* <Navbar></Navbar> */}
+            <h1 className={ "header" }>HOT POTATO!!!</h1>
+            <NavBar showNavbar={this.state.showNavbar} toggleNavbar={this.toggleNavbar} />
+            <button className="navButton" onClick={this.toggleNavbar}>{ this.state.showNavbar ? 'CLOSE' : 'OPEN' }</button>
             <BrowserRouter>
               <Switch>
                 {/* <Route path="/" component={About}/> */}
