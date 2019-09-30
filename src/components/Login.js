@@ -1,5 +1,6 @@
 import React from 'react'
-import { login } from '../actions/index'
+
+import URL_ROOT from '../URL'
 
 export default class Login extends React.Component {
 
@@ -10,6 +11,8 @@ export default class Login extends React.Component {
             password: ''
         }
     }
+
+    //make a login function
 
     handleChange = e => {
         const newFields = {...this.state.fields, [e.target.name]: e.target.value}
