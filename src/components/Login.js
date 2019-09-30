@@ -14,7 +14,7 @@ export default class Login extends React.Component {
 
     //make a login function
 
-    handleChange = e => {
+    handleChangea = e => {
         const newFields = {...this.state.fields, [e.target.name]: e.target.value}
         this.setState({fields: newFields})
     }
