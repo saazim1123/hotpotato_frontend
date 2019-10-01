@@ -12,8 +12,6 @@ export default class Login extends React.Component {
         }
     }
 
-    //make a login function
-
     login = (username, password) => {
         fetch(`${API_ROOT}auth`, {
             method: 'POST',
@@ -41,6 +39,8 @@ export default class Login extends React.Component {
       e.preventDefault();
       this.login(this.state.fields.username, this.state.fields.password)
       this.props.history.push('/dashboard')
+      this.props.toggleUser() 
+      this.props.updateUser(this.state.fields.username)
     }
 
 

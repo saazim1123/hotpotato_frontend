@@ -12,12 +12,8 @@ class App extends Component {
 
   state = {
     showNavbar: false,
-    userLogged: false
-  }
-
-
-  componentDidMount () {
-
+    userLogged: false,
+    currentUser: ""
   }
 
   toggleNavbar = () => {
@@ -26,11 +22,17 @@ class App extends Component {
 
   toggleUser = () => {
     this.setState({ userLogged: !this.state.userLogged })
-}
+  }
+
+  updateUser = (user) => {
+    this.setState({ currentUser: user })
+  }
+
+
 
   render(){
     const { showNavbar, userLogged } = this.state
-    const { toggleNavbar, toggleUser } = this
+    const { toggleNavbar, toggleUser, updateUser } = this
     return (
       <div>
           <div>
@@ -39,8 +41,8 @@ class App extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login} toggleUser={toggleUser}/>
-            <Route path="/signup" component={SignUp}/>
+            <Route path="/login" component={ props => { return (<Login {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
+            <Route path="/signup" component={SignUp} toggleUser={toggleUser} updateUser={updateUser}/>
             <Route path="/play" component={GameContainer}/>
           </Switch>
       </div>
