@@ -4,6 +4,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
+import GameContainer from './components/GameContainer'
 import {Route, Switch} from 'react-router-dom'
 
 import API from './adaptors/api'
@@ -11,7 +12,8 @@ import API from './adaptors/api'
 class App extends Component {
 
   state = {
-    showNavbar: false
+    showNavbar: false,
+    userLogged: false
   }
 
 
@@ -23,17 +25,24 @@ class App extends Component {
       this.setState({ showNavbar: !this.state.showNavbar })
   }
 
+  toggleUser = () => {
+    this.setState({ userLogged: !this.state.userLogged })
+}
+
   render(){
+    const { showNavbar, userLogged } = this.state
+    const { toggleNavbar, toggleUser } = this
     return (
       <div>
           <div>
-            <NavBar showNavbar={this.state.showNavbar} toggleNavbar={this.toggleNavbar} />
-            <button className="navButton" onClick={this.toggleNavbar}>{ this.state.showNavbar ? 'CLOSE' : 'OPEN' }</button>
+            <NavBar showNavbar={showNavbar} toggleNavbar={toggleNavbar} userLogged={userLogged} />
+            <button className="navButton" onClick={toggleNavbar}>{ showNavbar ? 'CLOSE' : 'OPEN' }</button>
           </div>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login}/>
+            <Route path="/login" component={Login} toggleUser={toggleUser}/>
             <Route path="/signup" component={SignUp}/>
+            <Route path="/play" component={GameContainer}/>
           </Switch>
       </div>
     )

@@ -76,6 +76,13 @@
     margin-left: 42%;
     margin-top: 20%;
   }
+
+  .hotPotato {
+    margin-left: 35%;
+    margin-right: auto;
+    width: 30%;
+    height: 30%;
+  }
 }
 
 /* ///////////////////////////////////////////////////////// */
@@ -160,6 +167,13 @@
   .login-form {
     margin-left: 32%;
     margin-top: 20%;
+  }
+
+  .hotPotato {
+    margin-left: 12%;
+    margin-right: auto;
+    width: 80%;
+    height: 30%;
   }
 }
 /* ////////////////////////////////////////////////////////// */
@@ -246,6 +260,13 @@
   .login-form {
     margin-left: 45%;
     margin-top: 20%;
+  }
+
+  .hotPotato {
+    margin-left: 35%;
+    margin-right: auto;
+    width: 30%;
+    height: 30%;
   }
 }
 /* ////////////////////////////////////////////////////// */

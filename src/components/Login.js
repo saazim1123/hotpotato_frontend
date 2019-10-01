@@ -74,7 +74,6 @@ export default class Login extends React.Component {
                 <button type="submit" className="ui basic green button" >Submit</button>
             </form>
             </div>        
-        </div>   
-        
+        </div>     
     )}
 }
