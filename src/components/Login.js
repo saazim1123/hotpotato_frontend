@@ -48,9 +48,33 @@ export default class Login extends React.Component {
         const {fields} = this.state
         return (
             <div> 
-                <h1> This is the Login Page </h1>
-
+                {/* <h1> This is the Login Page </h1> */}
                 <div className="ui form">
+
+          <form className={ "login-form" } onSubmit={this.handleSubmit}>
+            <div className="ui field">
+              <label>Username</label>
+              <input
+                name="username"
+                placeholder="username"
+                value={fields.username}
+                onChange={this.handleChange}
+                />
+            </div>
+            <div className="ui field">
+                <label>Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                  value={fields.password}
+                  onChange={this.handleChange}
+                />
+            </div>
+            <button type="submit" className="ui basic green button" >Submit</button>
+          </form>
+        </div>
+
                     <form onSubmit={this.handleSubmit}>
                         <div className="ui field">
                             <label>Username</label>
@@ -74,7 +98,6 @@ export default class Login extends React.Component {
                     <button type="submit" className="basic-button" >Submit</button>
                     </form>
                 </div>
-
             </div>
             
  

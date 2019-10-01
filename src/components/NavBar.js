@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 class NavBar extends React.Component {
 
@@ -6,10 +7,10 @@ class NavBar extends React.Component {
         return <div className={`overlay ${this.props.showNavbar ? 'active' : ''}`}>
         <button onClick={this.props.toggleNavbar} className="closebtn">&times;</button>
             <nav className="overlay-content">
-            <h1><a href={"/"}> Home </a></h1>
-            <h1><a href={"/login"}>| Log In |</a></h1>
-            <h1><a href={"/signup"}>| Sign Up |</a></h1>
-            <h1><a href={"/highscore"}>| High Scores |</a></h1>
+            <h1><Link to={"/"}> Home </Link></h1>
+            <h1><Link to={"/login"}>| Log In |</Link></h1>
+            <h1><Link to={"/signup"}>| Sign Up |</Link></h1>
+            <h1><Link to={"/highscore"}>| High Scores |</Link></h1>
             </nav>
         </div>
     }

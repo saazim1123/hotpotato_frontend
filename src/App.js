@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Home from './components/Home'
 import NavBar from './components/NavBar'
-import api from './adaptors/api'
+import {Route, Switch} from 'react-router-dom'
 
+import api from './adaptors/api'
 
 class App extends Component {
 
@@ -32,21 +33,14 @@ class App extends Component {
     return (
       <div>
           <div>
-            <h1 className={ "header" }>HOT POTATO!!!</h1>
             <NavBar showNavbar={this.state.showNavbar} toggleNavbar={this.toggleNavbar} />
             <button className="navButton" onClick={this.toggleNavbar}>{ this.state.showNavbar ? 'CLOSE' : 'OPEN' }</button>
-            <BrowserRouter>
-              <Switch>
-                {/* <Route path="/" component={About}/> */}
-                <Route path="/login" component={Login}/>
-                <Route path="/signup" component={SignUp}/>
-                
-                {/* <Route path="/game" component={PlayGame}/>
-                <Route path="/questions" component={Questions}/>
-                <Route path="/logout"/> */}
-              </Switch>
-            </BrowserRouter>
           </div>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/signup" component={SignUp}/>
+          </Switch>
       </div>
     )
   }

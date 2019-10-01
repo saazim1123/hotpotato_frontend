@@ -54,7 +54,7 @@ export default class SignUp extends React.Component {
         const { fields } = this.state
         return (
             <div> 
-                <form onSubmit={this.handleSubmit}>
+                <form className={'user-form'} onSubmit={this.handleSubmit}>
 
                         <label>Firstname: </label>
                         <input 
