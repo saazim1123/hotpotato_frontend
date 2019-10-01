@@ -40,7 +40,7 @@ export default class Login extends React.Component {
     handleSubmit = e => {
       e.preventDefault();
       this.login(this.state.fields.username, this.state.fields.password)
-    //   this.props.history.push('/dashboard')
+      this.props.history.push('/dashboard')
     }
 
 
@@ -61,7 +61,7 @@ export default class Login extends React.Component {
                 onChange={this.handleChange}
                 />
             </div>
-            <div className="ui field">
+             <div className="ui field">
                 <label>Password</label>
                 <input
                   name="password"
@@ -70,38 +70,11 @@ export default class Login extends React.Component {
                   value={fields.password}
                   onChange={this.handleChange}
                 />
-            </div>
-            <button type="submit" className="ui basic green button" >Submit</button>
-          </form>
-        </div>
-
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="ui field">
-                            <label>Username</label>
-                                <input
-                                    name="username"
-                                    placeholder="username"
-                                    value={fields.username}
-                                    onChange={this.handleChange}
-                                    />
-                        </div>
-                        <div className="ui field">
-                            <label>Password</label>
-                                <input
-                                name="password"
-                                type="password"
-                                placeholder="password"
-                                value={fields.password}
-                                onChange={this.handleChange}
-                                />
-                        </div>
-                    <button type="submit" className="basic-button" >Submit</button>
-                    </form>
                 </div>
-            </div>
-            
- 
-            
-        )
-    }
+                <button type="submit" className="ui basic green button" >Submit</button>
+            </form>
+            </div>        
+        </div>   
+        
+    )}
 }
