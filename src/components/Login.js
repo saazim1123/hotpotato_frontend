@@ -1,7 +1,5 @@
 import React from 'react'
 
-import URL_ROOT from '../URL'
-
 export default class Login extends React.Component {
 
     state = {
@@ -13,11 +11,6 @@ export default class Login extends React.Component {
     }
 
     //make a login function
-
-    handleChangea = e => {
-        const newFields = {...this.state.fields, [e.target.name]: e.target.value}
-        this.setState({fields: newFields})
-    }
 
     handleChange = e => {
         const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
