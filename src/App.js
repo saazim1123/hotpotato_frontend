@@ -42,7 +42,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={ props => { return (<Login {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
-            <Route path="/signup" component={SignUp} toggleUser={toggleUser} updateUser={updateUser}/>
+            <Route path="/signup" component={ props => { return (<SignUp {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
             <Route path="/play" component={GameContainer}/>
           </Switch>
       </div>
