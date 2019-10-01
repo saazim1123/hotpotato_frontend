@@ -4,8 +4,8 @@ const API_QUESTIONS = `${API_ROOT}/questions`
 
 export default class API {
   
-  static questions = () => {
-    return fetch(questions)
+  static getQuestions = () => {
+    return fetch(API_QUESTIONS)
         .then(resp => resp.json())
         .catch(error => alert(error.message))
   }

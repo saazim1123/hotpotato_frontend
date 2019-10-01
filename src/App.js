@@ -4,10 +4,9 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
-import GameContainer from './components/GameContainer'
+import GameContainer from './containers/GameContainer'
 import {Route, Switch} from 'react-router-dom'
 
-import API from './adaptors/api'
 
 class App extends Component {
 
@@ -47,7 +46,6 @@ class App extends Component {
       </div>
     )
   }
-
 }
 
 
