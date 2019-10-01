@@ -12,6 +12,20 @@ export default class Login extends React.Component {
         }
     }
 
+
+    login = (username, password) => {
+        fetch(`${API_ROOT}auth`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: localStorage.getItem('token')
+            },
+            body: JSON.stringify({username, password})
+        }).then(res => res.json())
+        .then(res => {
+            localStorage.setItem('token', res.id)
+        })
+    }
     
 
 //     //make a login function
@@ -29,11 +43,6 @@ export default class Login extends React.Component {
 //             localStorage.setItem('token', res.id)
 //         })
 //     }
-    
-   
-       
-
- 
 
     handleChange = e => {
         const newFields = {...this.state.fields, [e.target.name]: e.target.value}
@@ -43,6 +52,10 @@ export default class Login extends React.Component {
  
     handleSubmit = e => {
       e.preventDefault();
+      this.login(this.state.fields.username, this.state.fields.password)
+      this.props.history.push('/dashboard')
+      this.props.toggleUser() 
+      this.props.updateUser(this.state.fields.username)
     //   this.login(this.state.fields.username, this.state.fields.password)
       this.props.history.push('/play')
     }

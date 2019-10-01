@@ -30,6 +30,8 @@ export default class SignUp extends React.Component {
         e.preventDefault()
         //debugger
         API.createUser(this.state.fields)
+        this.props.toggleUser() 
+        this.props.updateUser(this.state.fields.username)
         //this.props.history.push('/dashboard')
         // this.props.history.push('/dashboard')
         // Has to to push through to the highscore too
