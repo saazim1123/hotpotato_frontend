@@ -1,5 +1,5 @@
 import React from 'react'
-import API from '../adaptors/API'
+import API from '../adaptors/api'
 
 class GameContainer extends React.Component {
     

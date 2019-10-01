@@ -4,11 +4,11 @@ const API_QUESTIONS = `${API_ROOT}/questions`
 
 export default class API {
   
-  static questions = () => {
-    return fetch(questions)
-        .then(resp => resp.json())
-        .catch(error => alert(error.message))
-  }
+  // static questions = () => {
+  //   return fetch(questions)
+  //       .then(resp => resp.json())
+  //       .catch(error => alert(error.message))
+  // }
   
   static createUser = user => {
     return fetch(API_USER_ROOT, {
