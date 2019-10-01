@@ -1,6 +1,6 @@
 import React from 'react'
 
-import URL_ROOT from '../URL'
+import API_ROOT from '../adaptors/api'
 
 export default class Login extends React.Component {
 
@@ -14,19 +14,32 @@ export default class Login extends React.Component {
 
     //make a login function
 
-    handleChangea = e => {
+    login = (username, password) => {
+        fetch(`${API_ROOT}auth`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: localStorage.getItem('token')
+            },
+            body: JSON.stringify({username, password})
+        }).then(res => res.json())
+        .then(res => {
+            localStorage.setItem('token', res.id)
+        })
+    }
+    
+   
+       
+
+    handleChange = e => {
         const newFields = {...this.state.fields, [e.target.name]: e.target.value}
         this.setState({fields: newFields})
     }
 
-    handleChange = e => {
-        const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
-        this.setState({ fields: newFields});
-    };
-    
+ 
     handleSubmit = e => {
       e.preventDefault();
-      this.props.login(this.state.fields.username, this.state.fields.password)
+      this.login(this.state.fields.username, this.state.fields.password)
     //   this.props.history.push('/dashboard')
     }
 
@@ -37,6 +50,7 @@ export default class Login extends React.Component {
             <div> 
                 {/* <h1> This is the Login Page </h1> */}
                 <div className="ui form">
+
           <form className={ "login-form" } onSubmit={this.handleSubmit}>
             <div className="ui field">
               <label>Username</label>
@@ -61,6 +75,29 @@ export default class Login extends React.Component {
           </form>
         </div>
 
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="ui field">
+                            <label>Username</label>
+                                <input
+                                    name="username"
+                                    placeholder="username"
+                                    value={fields.username}
+                                    onChange={this.handleChange}
+                                    />
+                        </div>
+                        <div className="ui field">
+                            <label>Password</label>
+                                <input
+                                name="password"
+                                type="password"
+                                placeholder="password"
+                                value={fields.password}
+                                onChange={this.handleChange}
+                                />
+                        </div>
+                    <button type="submit" className="basic-button" >Submit</button>
+                    </form>
+                </div>
             </div>
             
  
@@ -68,4 +105,3 @@ export default class Login extends React.Component {
         )
     }
 }
-

@@ -6,12 +6,24 @@ import Home from './components/Home'
 import NavBar from './components/NavBar'
 import {Route, Switch} from 'react-router-dom'
 
+import api from './adaptors/api'
+
 class App extends Component {
 
   state = {
     showNavbar: false
   }
 
+
+  componentDidMount () {
+    const token = localStorage.getItem('token');
+    if (token) {
+      api.auth.getCurrentUser().then(res => {
+        // this.props.login(res).bind(this)
+        
+      });
+    }
+  }
 
   toggleNavbar = () => {
       this.setState({ showNavbar: !this.state.showNavbar })

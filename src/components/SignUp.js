@@ -1,5 +1,5 @@
 import React from 'react'
-import URL_ROOT from '../URL'
+import API_ROOT from '../adaptors/api'
 
 export default class SignUp extends React.Component {
     
@@ -20,7 +20,7 @@ export default class SignUp extends React.Component {
    
 
    addUser = (user) => {
-    fetch(`${URL_ROOT}users`, {
+    fetch(`${API_ROOT}users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,8 @@ export default class SignUp extends React.Component {
         e.preventDefault()
         //debugger
         this.addUser(this.state.fields)
-        
+        //this.props.history.push('/dashboard')
+        this.props.history.push('/dashboard')
         // Has to to push through to the highscore too
     }
 
