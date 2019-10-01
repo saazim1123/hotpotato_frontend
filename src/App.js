@@ -28,15 +28,20 @@ class App extends Component {
     this.setState({ currentUser: user })
   }
 
+  logOut = () => {
+    this.toggleUser()
+    this.setState({ currentUser: "" })
+  }
+
 
 
   render(){
     const { showNavbar, userLogged } = this.state
-    const { toggleNavbar, toggleUser, updateUser } = this
+    const { toggleNavbar, toggleUser, updateUser, logOut } = this
     return (
       <div>
           <div>
-            <NavBar showNavbar={showNavbar} toggleNavbar={toggleNavbar} userLogged={userLogged} />
+            <NavBar showNavbar={showNavbar} toggleNavbar={toggleNavbar} userLogged={userLogged} logOut={logOut}/>
             <button className="navButton" onClick={toggleNavbar}>{ showNavbar ? 'CLOSE' : 'OPEN' }</button>
           </div>
           <Switch>

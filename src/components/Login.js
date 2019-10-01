@@ -1,6 +1,6 @@
 import React from 'react'
-
-// import API_ROOT from '../adaptors/api'
+import API_ROOT from '../adaptors/api'
+import API from '../adaptors/api'
 
 export default class Login extends React.Component {
 
@@ -52,10 +52,12 @@ export default class Login extends React.Component {
  
     handleSubmit = e => {
       e.preventDefault();
-      this.login(this.state.fields.username, this.state.fields.password)
+      const user = this.state.fields.username
+      this.login(user, this.state.fields.password)
       this.props.history.push('/dashboard')
       this.props.toggleUser() 
-      this.props.updateUser(this.state.fields.username)
+      this.props.updateUser(user)
+    //   API.login(user)
     //   this.login(this.state.fields.username, this.state.fields.password)
       this.props.history.push('/play')
     }
