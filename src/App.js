@@ -7,7 +7,7 @@ import NavBar from './components/NavBar'
 import GameContainer from './components/GameContainer'
 import {Route, Switch} from 'react-router-dom'
 
-import api from './adaptors/api'
+import API from './adaptors/api'
 
 class App extends Component {
 
@@ -18,13 +18,7 @@ class App extends Component {
 
 
   componentDidMount () {
-    const token = localStorage.getItem('token');
-    if (token) {
-      api.auth.getCurrentUser().then(res => {
-        // this.props.login(res).bind(this)
-        
-      });
-    }
+
   }
 
   toggleNavbar = () => {

@@ -1,7 +1,9 @@
 import React from 'react'
-import API_ROOT from '../adaptors/api'
+import API from '../adaptors/api'
+
 
 export default class SignUp extends React.Component {
+
     
     state = {
         error: false,
@@ -16,22 +18,6 @@ export default class SignUp extends React.Component {
     }
 
     //make a addUser function
-    
-   
-
-   addUser = (user) => {
-    fetch(`${API_ROOT}users`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('token')
-      },
-      data: {},
-      dataType: "JSON",
-      body: JSON.stringify({ user })
-    }).then(resp => resp.json())
-  
-  }
 
   
 
@@ -43,9 +29,9 @@ export default class SignUp extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
         //debugger
-        this.addUser(this.state.fields)
+        API.createUser(this.state.fields)
         //this.props.history.push('/dashboard')
-        this.props.history.push('/dashboard')
+        // this.props.history.push('/dashboard')
         // Has to to push through to the highscore too
     }
 
