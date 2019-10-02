@@ -35,6 +35,7 @@ export default class SignUp extends React.Component {
         //this.props.history.push('/dashboard')
         // this.props.history.push('/dashboard')
         // Has to to push through to the highscore too
+        this.props.history.push('/play')
     }
 
     render (){

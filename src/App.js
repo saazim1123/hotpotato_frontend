@@ -6,6 +6,7 @@ import SignUp from './components/SignUp'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
 import GameContainer from './containers/GameContainer'
+import GameOver from './components/GameOver'
 import {Route, Switch} from 'react-router-dom'
 
 
@@ -29,6 +30,11 @@ class App extends Component {
     this.setState({ currentUser: user })
   }
 
+  logOut = () => {
+    this.toggleUser()
+    this.setState({ currentUser: "" })
+  }
+
   login = user => {
 
     API.login(user).then(user => this.setState({ user }));
@@ -38,11 +44,11 @@ class App extends Component {
 
   render(){
     const { showNavbar, userLogged } = this.state
-    const { toggleNavbar, toggleUser, updateUser } = this
+    const { toggleNavbar, toggleUser, updateUser, logOut } = this
     return (
       <div>
           <div>
-            <NavBar showNavbar={showNavbar} toggleNavbar={toggleNavbar} userLogged={userLogged} />
+            <NavBar showNavbar={showNavbar} toggleNavbar={toggleNavbar} userLogged={userLogged} logOut={logOut}/>
             <button className="navButton" onClick={toggleNavbar}>{ showNavbar ? 'CLOSE' : 'OPEN' }</button>
           </div>
           <Switch>
@@ -51,6 +57,7 @@ class App extends Component {
             <Route path="/login" component={props => <Login {...props}/>}/>
             <Route path="/signup" component={ props => { return (<SignUp {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
             <Route path="/play" component={GameContainer}/>
+            <Route path="/gameover" component={ props => { return (<GameOver {...props}/>)}}/>
           </Switch>
       </div>
     )

@@ -1,7 +1,7 @@
 const API_ROOT = 'http://localhost:3000/api/v1'
 const API_USER_ROOT = `${API_ROOT}/users`
 const API_LOGIN_URL = `${API_ROOT}/login`
-const API_VALIDATE_URL = `${API_ROOT}/validate`
+// const API_VALIDATE_URL = `${API_ROOT}/validate`
 const API_QUESTIONS = `${API_ROOT}/questions`
 
 //  export default class API {
@@ -19,7 +19,17 @@ const API_QUESTIONS = `${API_ROOT}/questions`
     ...moreHeaders
   });
 
+  static getUsers = () => {
+    return fetch(API_USER_ROOT)
+    .then(resp => resp.json())
+    .catch(error => alert(error.message))
+  }
 
+  static getSortedByRankedUsers = () => {
+    return fetch("http://localhost:3000/api/v1/ranked_users")
+    .then(resp => resp.json())
+    .catch(error => alert(error.message))
+  }
 
  const createUser = user => {
     return fetch(API_USER_ROOT, {

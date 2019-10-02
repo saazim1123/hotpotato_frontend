@@ -1,5 +1,4 @@
 import React from 'react'
-//import GameContainer from '../containers/GameContainer'
 import API_ROOT from '../adaptors/api'
 
 export default class Login extends React.Component {
@@ -34,17 +33,17 @@ export default class Login extends React.Component {
  
     handleSubmit = e => {
       e.preventDefault();
+      const user = this.state.fields.username
       this.login(this.state.fields.username, this.state.fields.password)
-      this.props.history.push("/play")
-      
+      this.props.toggleUser() 
+      this.props.updateUser(user)
+      this.props.history.push('/play')
     }
 
 
     render (){
-        //const {fields} = this.state
         return (
             <div> 
-                {/* <h1> This is the Login Page </h1> */}
             <div className="ui form">
             
             <form className={ "login-form" } onSubmit={(e) => this.handleSubmit(e)}>
