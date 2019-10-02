@@ -17,10 +17,10 @@ class GameContainer extends React.Component {
     }
 
     componentDidMount() {
-        if(localStorage.getItem('token')) {this.getQuestions()
-        }else{
-            this.props.history.push("/login")
-        }
+        if(localStorage.getItem('token') === "undefined") {this.props.history.push("/login")
+        }else if(localStorage.getItem('token')){
+        this.getQuestions()}
+        
         
     }
 

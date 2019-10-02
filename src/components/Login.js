@@ -1,5 +1,5 @@
 import React from 'react'
-
+//import GameContainer from '../containers/GameContainer'
 import API_ROOT from '../adaptors/api'
 
 export default class Login extends React.Component {
@@ -36,6 +36,7 @@ export default class Login extends React.Component {
       e.preventDefault();
       this.login(this.state.fields.username, this.state.fields.password)
       this.props.history.push("/play")
+      
     }
 
 
