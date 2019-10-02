@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import API from '../adaptors/api'
 import QuestionCard from '../components/QuestionCard'
 
 class GameContainer extends React.Component {
     
     state = {
-        questions: [[]],
+        questions: [],
         currentQuestionNumber: 0,
         currentScore: 0,
         highestScore: 0
@@ -36,7 +36,7 @@ class GameContainer extends React.Component {
     }
 
     resetScore = () => {
-        this.setState({ currentScore: 0 })
+        this.setState({ currentScore: 0, highestScore: 0 })
     }
 
     randomColors = ['black', 'red', 'blue', 'purple', 'teal', 'aqua', 'grey', 'coral']
@@ -46,7 +46,7 @@ class GameContainer extends React.Component {
         const { nextQuestion, increaseCurrentScore, resetScore } = this
         return <div>
                 <h1 className={"current-streak"}>Your current streak:</h1><h1 className={"current-score"} style={ {color: `${this.randomColors[Math.floor(Math.random() * this.randomColors.length)]}`}  }>{currentScore}</h1>
-        <QuestionCard question={questions[currentQuestionNumber]} nextQuestion={nextQuestion} increaseCurrentScore={increaseCurrentScore} resetScore={resetScore} currentScore={currentScore}/>
+        <QuestionCard history={this.props.history} question={questions[currentQuestionNumber]} nextQuestion={nextQuestion} increaseCurrentScore={increaseCurrentScore} resetScore={resetScore} currentScore={currentScore} highestScore={highestScore}/>
                 <h1 className={"highest-score"}>Your Highest Score: {highestScore}</h1>
                </div>
     }

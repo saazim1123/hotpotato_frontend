@@ -5,6 +5,7 @@ import SignUp from './components/SignUp'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
 import GameContainer from './containers/GameContainer'
+import GameOver from './components/GameOver'
 import {Route, Switch} from 'react-router-dom'
 
 
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path="/login" component={ props => { return (<Login {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
             <Route path="/signup" component={ props => { return (<SignUp {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
             <Route path="/play" component={GameContainer}/>
+            <Route path="/gameover" component={ props => { return (<GameOver {...props}/>)}}/>
           </Switch>
       </div>
     )

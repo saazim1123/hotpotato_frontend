@@ -1,6 +1,5 @@
 import React from 'react'
 import API_ROOT from '../adaptors/api'
-import API from '../adaptors/api'
 
 export default class Login extends React.Component {
 
