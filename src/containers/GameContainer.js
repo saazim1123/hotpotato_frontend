@@ -11,12 +11,17 @@ class GameContainer extends React.Component {
         highestScore: 0
     }
 
+
     getQuestions = () => {
         API.getQuestions().then(questions => this.setState({ questions }))
     }
 
     componentDidMount() {
-        this.getQuestions()
+        if(localStorage.getItem('token')) {this.getQuestions()
+        }else{
+            this.props.history.push("/login")
+        }
+        
     }
 
     nextQuestion = () => {
