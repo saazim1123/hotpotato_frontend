@@ -4,18 +4,24 @@ const API_LOGIN_URL = `${API_ROOT}/login`
 const API_VALIDATE_URL = `${API_ROOT}/validate`
 const API_QUESTIONS = `${API_ROOT}/questions`
 
-export default class API {
+//  export default class API {
   
-  static getQuestions = () => {
+ const getQuestions = () => {
     return fetch(API_QUESTIONS)
         .then(resp => resp.json())
         .catch(error => alert(error.message))
   }
+
+// }
   
+  const constructHeaders = (moreHeaders = {}) => ({
+    Authorization: localStorage.getItem("token"),
+    ...moreHeaders
+  });
 
 
 
-  static createUser = user => {
+ const createUser = user => {
     return fetch(API_USER_ROOT, {
       method: 'POST',
       headers: {'content-type':'application/json','accept':'application/json'},
@@ -24,28 +30,56 @@ export default class API {
     .then(resp => resp.json())
   }
 
-  static login = user => {
-    return fetch(API_LOGIN_URL, {
-      
-    })
-  }
-
-  static jsonify = res => {
-
+  const jsonify = res => {
     if (res.ok) return res.json();
     else throw res.json();
   };
 
-   static handleServerError = response => {
+  const handleServerError = response => {
     throw response;
   };
 
-  static saveToken = data => {
+  const saveToken = data => {
     localStorage.setItem("token", data.token);
     return data.user;
   };
 
+  const login = user =>
+  fetch(API_LOGIN_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ user })
+  })
+    .then((resp) => resp.json())
+    .then(data => saveToken(data))
+    // .catch(data => handleServerError);
+
+  const validateUser = () => {
+      if (!localStorage.getItem("token"))
+        return Promise.resolve({ error: "no token" });
+    
+      return fetch(API_VALIDATE_URL, {
+        headers: constructHeaders()
+      })
+        .then(jsonify)
+        .then(saveToken)
+        .catch(handleServerError);
+  };
+
+const clearToken = () => localStorage.removeItem("token");
+export default {
+  getQuestions,
+  createUser,
+  login,
+  validateUser,
+  clearToken
+};
+  
+
+   
  
   
   
-}
+// 

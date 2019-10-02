@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import API from './adaptors/api'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
@@ -28,6 +29,11 @@ class App extends Component {
     this.setState({ currentUser: user })
   }
 
+  login = user => {
+
+    API.login(user).then(user => this.setState({ user }));
+    this.props.history.push("/");
+  };
 
 
   render(){
@@ -41,7 +47,8 @@ class App extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={ props => { return (<Login {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
+            {/* <Route path="/login" component={ props => { return (<Login {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/> */}
+            <Route path="/login" component={props => <Login {...props}/>}/>
             <Route path="/signup" component={ props => { return (<SignUp {...props} toggleUser={toggleUser} updateUser={updateUser}/>)}}/>
             <Route path="/play" component={GameContainer}/>
           </Switch>
